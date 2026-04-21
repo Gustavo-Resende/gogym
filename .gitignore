@@ -1,0 +1,5 @@
+__debug_bin*
+*.exe
+*.log
+.env
+CLAUDE.md
