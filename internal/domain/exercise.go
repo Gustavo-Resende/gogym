@@ -1,9 +1,25 @@
-package exercise
+package domain
 
-import "errors"
+import (
+	"errors"
+
+	"github.com/google/uuid"
+)
+
+type MuscleGroup string
+
+const (
+	Chest     MuscleGroup = "chest"
+	Triceps   MuscleGroup = "triceps"
+	Biceps    MuscleGroup = "biceps"
+	Back      MuscleGroup = "back"
+	Legs      MuscleGroup = "legs"
+	Shoulders MuscleGroup = "shoulders"
+	Abs       MuscleGroup = "abs"
+)
 
 type Exercise struct {
-	ID          int         `json:"id"`
+	ID          uuid.UUID   `json:"id"`
 	Name        string      `json:"name"`
 	Description string      `json:"description"`
 	MuscleGroup MuscleGroup `json:"muscle_group"`
@@ -19,6 +35,7 @@ func NewExercise(name string, description string, muscleGroup MuscleGroup) (*Exe
 	}
 
 	return &Exercise{
+		ID:          uuid.New(),
 		Name:        name,
 		Description: description,
 		MuscleGroup: muscleGroup,
